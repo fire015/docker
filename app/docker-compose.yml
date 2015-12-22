@@ -1,0 +1,9 @@
+apache:
+  image: fire015/php-base
+  ports:
+    - "80:80"
+  volumes:
+   - .:/var/www/html
+   - ./infra/apache/vhosts.conf:/etc/httpd/conf.d/vhosts.conf
+  working_dir: /var/www/html
+  command: /var/www/html/start.sh
