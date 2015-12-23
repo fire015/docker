@@ -1,9 +1,26 @@
 apache:
   image: fire015/php-base
   ports:
-    - "80:80"
+    - 80:80
   volumes:
    - .:/var/www/html
-   - ./infra/apache/vhosts.conf:/etc/httpd/conf.d/vhosts.conf
+   - ./infra/apache:/run/apache
   working_dir: /var/www/html
-  command: /var/www/html/start.sh
+  command: /run/apache/start.sh
+  links:
+    - memcache
+    - db
+
+memcache:
+  image: library/memcached:1.4
+  ports:
+    - 11211:11211
+  command: memcached -v -m 64
+
+db:
+  image: library/mysql:5.6
+  ports:
+    - 3306:3306
+  environment:
+    - MYSQL_DATABASE=app
+    - MYSQL_ROOT_PASSWORD=letmein

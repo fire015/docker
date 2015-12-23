@@ -7,7 +7,6 @@ stop:
 	docker-compose -p ${project_name} stop
 
 clean:
-	@echo "Cleaning up"
 	$(MAKE) stop
 	docker-compose -p ${project_name} rm -f
 
