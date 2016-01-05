@@ -16,6 +16,7 @@ RUN yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
   php-xml-5.6* \
   php-bcmath-5.6* \
   php-pecl-memcached-2.2* \
+  php-pecl-imagick-3.3* \
   php-fpm-5.6* \
   httpd-2.4.6 \
   supervisor \
@@ -24,6 +25,7 @@ RUN yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
   git \
   make \
   mysql \
+  ImageMagick \
   mod_ssl \
   openssl \
   telnet \
