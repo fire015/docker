@@ -35,6 +35,8 @@ RUN pecl install Xdebug
 
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
+RUN npm update -g npm
+
 RUN rm /etc/httpd/conf.d/welcome.conf \
   && sed -i -e "s/Options\ Indexes\ FollowSymLinks/Options\ -Indexes\ +FollowSymLinks/g" /etc/httpd/conf/httpd.conf \
   && sed -i -e "s/EnableSendfile on/EnableSendfile off/g" /etc/httpd/conf/httpd.conf \
