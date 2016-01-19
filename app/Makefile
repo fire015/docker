@@ -16,7 +16,10 @@ pull:
 logs:
 	docker-compose -p ${project_name} logs
 
+restart:
+	docker-compose -p ${project_name} restart
+
 compose:
 	docker-compose -p ${project_name} up -d
 
-.PHONY: config clean compose build tag push pull stop
+.PHONY: config clean compose build tag push pull stop restart
