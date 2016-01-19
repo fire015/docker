@@ -40,7 +40,10 @@ RUN npm update -g npm
 RUN rm /etc/httpd/conf.d/welcome.conf \
   && sed -i -e "s/Options\ Indexes\ FollowSymLinks/Options\ -Indexes\ +FollowSymLinks/g" /etc/httpd/conf/httpd.conf \
   && sed -i -e "s/EnableSendfile on/EnableSendfile off/g" /etc/httpd/conf/httpd.conf \
-  && echo "FileETag None" >> /etc/httpd/conf/httpd.conf
+  && sed -i -e "s/expose_php\ =\ On/expose_php\ =\ Off/g" /etc/php.ini \
+  && echo "FileETag None" >> /etc/httpd/conf/httpd.conf \
+  && echo "ServerTokens Prod" >> /etc/httpd/conf/httpd.conf \
+  && echo "ServerSignature Off" >> /etc/httpd/conf/httpd.conf
 
 COPY php.d/* /etc/php.d/
 
