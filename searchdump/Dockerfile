@@ -1,6 +1,11 @@
 FROM raphiz/ubuntu-cron
 
-RUN apt-get update && apt-get install -y python-pip npm && pip install awscli && npm install elasticdump -g && ln -s /usr/bin/nodejs /usr/bin/node
+RUN apt-get update \
+    && apt-get install -y python-pip curl wget \
+    && curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - \
+    && apt-get install -y nodejs \
+    && pip install awscli \
+    && npm install elasticdump@1.0.2 -g
 
 COPY cron.txt /etc/crontab
 COPY backup.sh /root/backup.sh
