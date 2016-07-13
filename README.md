@@ -2,7 +2,7 @@
 
 ```
 cd php-base
-docker build -t fire015/php-base .
+docker build -t fire015/php-base --no-cache=true .
 ```
 
 # Tag
